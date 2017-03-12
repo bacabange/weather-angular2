@@ -6,9 +6,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { MaterialModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
-import { SearchInputComponent } from './search-input/search-input.component';
-import { HomePageComponent } from './home-page/home-page.component';
-import { WeatherDetailComponent } from './weather-detail/weather-detail.component';
+import { SearchInputComponent } from './components/search-input/search-input.component';
+import { HomePageComponent } from './components/home-page/home-page.component';
+import { WeatherDetailComponent } from './components/weather-detail/weather-detail.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent }
