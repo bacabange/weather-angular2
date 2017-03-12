@@ -8,6 +8,7 @@ import { MaterialModule } from '@angular/material';
 import { AppComponent } from './app.component';
 import { SearchInputComponent } from './search-input/search-input.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { WeatherDetailComponent } from './weather-detail/weather-detail.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent }
@@ -17,7 +18,8 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     SearchInputComponent,
-    HomePageComponent
+    HomePageComponent,
+    WeatherDetailComponent
   ],
   imports: [
     BrowserModule,

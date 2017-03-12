@@ -6,10 +6,8 @@ footer {
 
 .app-content {
 	padding: 20px;
-}
-
-.app-content md-card {
-	margin: 20px;
+	width: 560px;
+	margin: 100px auto 0 auto;
 }
 
 .example-icon {
