@@ -1,0 +1,21 @@
+footer {
+	bottom: 0 !important;
+	position: fixed;
+	width: 100%;
+}
+
+.app-content {
+	padding: 20px;
+}
+
+.app-content md-card {
+	margin: 20px;
+}
+
+.example-icon {
+  padding: 0 14px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
