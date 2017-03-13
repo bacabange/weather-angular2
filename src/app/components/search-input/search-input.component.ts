@@ -18,22 +18,19 @@ import { City } from '../../models/city';
 export class SearchInputComponent implements OnInit {
 
 	public cities: City[];
-	public controlCity;
-	public filteredOptions: Observable<City[]>;
+	myControl = new FormControl();
+	filteredOptions: Observable<City[]>;
 
 	constructor(
 		private _citiesService: CitiesService
-	) {
-		this.controlCity = new FormControl();
-	}
+	) {}
 
 	ngOnInit() {
 
 		this._citiesService.getCities().subscribe(
 			result => {
 				this.cities = result;
-
-				this.filteredOptions = this.controlCity.valueChanges
+				this.filteredOptions = this.myControl.valueChanges
 					.startWith(null)
 					.map(city => city && typeof city === 'object' ? city.name : city)
 					.map(name => name ? this.filter(name) : this.cities.slice(1));
@@ -48,6 +45,10 @@ export class SearchInputComponent implements OnInit {
 
 	displayFn(city: City): string {
 		return city ? city.name : null;
+	}
+
+	selectCity (city){
+		console.log(city);
 	}
 
 }
