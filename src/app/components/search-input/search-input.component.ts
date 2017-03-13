@@ -22,7 +22,7 @@ export class SearchInputComponent implements OnInit {
 	filteredOptions: Observable<City[]>;
 
 	@Input() showWeatherDetail: boolean;
-	@Output() onShowWeatherDetail: EventEmitter<boolean> = new EventEmitter<boolean>();;
+	@Output() onShowWeatherDetail = new EventEmitter<boolean>();
 
 	constructor(
 		private _citiesService: CitiesService

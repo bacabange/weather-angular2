@@ -18,9 +18,9 @@ export class HomePageComponent implements OnInit {
 	ngOnInit() {
 	}
 
-	onShowWeatherDetail(showWeatherDetail: boolean) {
-		console.log('Holi');
-		this.showWeatherDetail = showWeatherDetail;
+	onShowWeatherDetail(isShow) {
+		console.log(isShow);
+		this.showWeatherDetail = isShow;
 	}
 
 }
