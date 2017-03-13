@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import 'rxjs/add/operator/startWith';
 import {Observable} from 'rxjs/Rx';
@@ -21,9 +21,17 @@ export class SearchInputComponent implements OnInit {
 	myControl = new FormControl();
 	filteredOptions: Observable<City[]>;
 
+	@Input() showWeatherDetail: boolean;
+	@Output() onShowWeatherDetail: EventEmitter<boolean> = new EventEmitter<boolean>();;
+
 	constructor(
 		private _citiesService: CitiesService
-	) {}
+	) {	}
+
+	onShow(agreed: boolean) {
+		this.onShowWeatherDetail.emit(agreed);
+		this.showWeatherDetail = true;
+	}
 
 	ngOnInit() {
 
@@ -47,8 +55,11 @@ export class SearchInputComponent implements OnInit {
 		return city ? city.name : null;
 	}
 
-	selectCity (city){
+	selectCity (city: City){
 		console.log(city);
+		this.onShow(true);
 	}
+
+	
 
 }
