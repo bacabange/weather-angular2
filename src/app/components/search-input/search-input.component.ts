@@ -92,6 +92,7 @@ export class SearchInputComponent implements OnInit {
 		this._citiesService.getCities().subscribe(
 			result => {
 				this.cities = result;
+				console.log(result);
 			}, 
 			error => console.log(error));
 	}
