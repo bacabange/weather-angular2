@@ -9,14 +9,10 @@ import 'rxjs/add/operator/catch';
 
 export class CitiesService{
 
-    constructor(private http: Http) {
-         var obj;
-         this.getJSON().subscribe(data => obj=data, error => console.log(error));
-    }
+    constructor(private http: Http) { }
 
-    public getJSON(): Observable<any> {
-         return this.http.get("./app/resources/city-list.json")
-                         .map((res) => res.json());
+    public getCities(): Observable<any> {
+         return this.http.get("./app/resources/city-list.json").map((res) => res.json());
 
      }
 }

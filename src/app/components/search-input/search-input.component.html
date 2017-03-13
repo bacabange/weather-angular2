@@ -1,3 +1,14 @@
-<md-input-container class="input-full-width">
-	<input mdInput placeholder="Choose City">
+<!-- <md-input-container class="input-full-width">
+  <input mdInput placeholder="City">
+</md-input-container> -->
+
+
+<md-input-container>
+  <input mdInput placeholder="State" [mdAutocomplete]="auto" [formControl]="stateCtrl">
 </md-input-container>
+
+<md-autocomplete #auto="mdAutocomplete">
+  <md-option *ngFor="let state of filteredStates | async" [value]="state">
+    {{ state }}
+  </md-option>
+</md-autocomplete>
