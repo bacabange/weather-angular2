@@ -1,6 +1,5 @@
 import { Component, OnInit, Input,   trigger, state, style, transition, animate } from '@angular/core';
 import { SearchInputComponent } from '../search-input/search-input.component';
-import { WeatherDetailComponent } from '../weather-detail/weather-detail.component';
 
 @Component({
 	selector: 'home-page',
@@ -9,18 +8,9 @@ import { WeatherDetailComponent } from '../weather-detail/weather-detail.compone
 })
 export class HomePageComponent implements OnInit {
 
-	public showWeatherDetail: boolean;
-
-	constructor() {
-		this.showWeatherDetail = false;
-	}
+	constructor() {	}
 
 	ngOnInit() {
-	}
-
-	onShowWeatherDetail(isShow) {
-		console.log(isShow);
-		this.showWeatherDetail = isShow;
 	}
 
 }

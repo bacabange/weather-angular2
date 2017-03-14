@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 import 'rxjs/add/operator/startWith';
 import {Observable} from 'rxjs/Rx';
 
+import { WeatherDetailComponent } from '../weather-detail/weather-detail.component';
 import { CitiesService } from '../../services/cities.service';
 import { WeatherService } from '../../services/weather.service';
 import { City } from '../../models/city';
@@ -20,16 +21,17 @@ import { City } from '../../models/city';
 export class SearchInputComponent implements OnInit {
 
 	public cities: City[];
+	public showWeatherDetail: boolean;
+
 	myControl = new FormControl();
 	filteredOptions: Observable<City[]>;
-
-	@Input() showWeatherDetail: boolean;
-	@Output() onShowWeatherDetail = new EventEmitter<boolean>();
 
 	constructor(
 		private _citiesService: CitiesService,
 		private _weatherService: WeatherService
-	) {	}
+	) {
+		this.showWeatherDetail = false;
+	}
 
 	ngOnInit() {
 		// consumir servicio de ciudades
@@ -55,7 +57,7 @@ export class SearchInputComponent implements OnInit {
 			error => console.log(error)
 		);
 
-		this.onShow(true);
+		this.showWeatherDetail = true;
 	}
 
 	// Filtrar por el nombre de la ciudad
@@ -65,11 +67,6 @@ export class SearchInputComponent implements OnInit {
 	// Mostrar el nombre de la ciudad cuando se selecciona
 	displayFn(city: City): string {
 		return city ? city.name : null;
-	}
-	// Mostrar card del clima
-	onShow(agreed: boolean) {
-		this.onShowWeatherDetail.emit(agreed);
-		this.showWeatherDetail = true;
 	}
 	
 
