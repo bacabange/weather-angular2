@@ -4,6 +4,7 @@ import 'rxjs/add/operator/startWith';
 import {Observable} from 'rxjs/Rx';
 
 import { CitiesService } from '../../services/cities.service';
+import { WeatherService } from '../../services/weather.service';
 import { City } from '../../models/city';
 
 @Component({
@@ -11,7 +12,8 @@ import { City } from '../../models/city';
 	templateUrl: './search-input.component.html',
 	styleUrls: ['./search-input.component.css'],
 	providers: [
-		CitiesService
+		CitiesService,
+		WeatherService
 	]
 })
 
@@ -25,13 +27,9 @@ export class SearchInputComponent implements OnInit {
 	@Output() onShowWeatherDetail = new EventEmitter<boolean>();
 
 	constructor(
-		private _citiesService: CitiesService
+		private _citiesService: CitiesService,
+		private _weatherService: WeatherService
 	) {	}
-
-	onShow(agreed: boolean) {
-		this.onShowWeatherDetail.emit(agreed);
-		this.showWeatherDetail = true;
-	}
 
 	ngOnInit() {
 
@@ -55,8 +53,22 @@ export class SearchInputComponent implements OnInit {
 		return city ? city.name : null;
 	}
 
+	onShow(agreed: boolean) {
+		this.onShowWeatherDetail.emit(agreed);
+		this.showWeatherDetail = true;
+	}
+
 	selectCity (city: City){
 		console.log(city);
+		
+		this._weatherService.getWeather().subscribe(
+			result => {
+				console.log(result);
+			},
+
+			error => console.log(error)
+		);
+
 		this.onShow(true);
 	}
 
