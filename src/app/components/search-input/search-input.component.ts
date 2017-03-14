@@ -7,6 +7,7 @@ import { WeatherDetailComponent } from '../weather-detail/weather-detail.compone
 import { CitiesService } from '../../services/cities.service';
 import { WeatherService } from '../../services/weather.service';
 import { City } from '../../models/city';
+import { Weather } from '../../models/weather';
 
 @Component({
 	selector: 'search-input',
@@ -21,6 +22,8 @@ import { City } from '../../models/city';
 export class SearchInputComponent implements OnInit {
 
 	public cities: City[];
+	public city: City;
+	public weather: Weather;
 	public showWeatherDetail: boolean;
 
 	myControl = new FormControl();
@@ -47,17 +50,15 @@ export class SearchInputComponent implements OnInit {
 	}
 	// Evento, seleccionar ciudad
 	selectCity (city: City){
-		console.log(city);
-		
+		this.city = city;
 		this._weatherService.getWeather(city._id).subscribe(
 			result => {
-				console.log(result);
+				this.weather = result;
+				this.onShowCardWeather();
 			},
 
 			error => console.log(error)
 		);
-
-		this.showWeatherDetail = true;
 	}
 
 	// Filtrar por el nombre de la ciudad
@@ -67,6 +68,10 @@ export class SearchInputComponent implements OnInit {
 	// Mostrar el nombre de la ciudad cuando se selecciona
 	displayFn(city: City): string {
 		return city ? city.name : null;
+	}
+
+	onShowCardWeather(){
+		this.showWeatherDetail = true;
 	}
 	
 

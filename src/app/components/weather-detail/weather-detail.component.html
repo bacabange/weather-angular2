@@ -1,19 +1,11 @@
-<md-card class="weather-info">
+<md-card class="weather-card">
 	<md-card-header>
-		<md-card-title>Valle del Cauca</md-card-title>
-		<md-card-subtitle>21°</md-card-subtitle>
+		<md-card-title>{{ city.name }}</md-card-title>
+		<md-card-subtitle>{{ city.country }}</md-card-subtitle>
 	</md-card-header>
-
+	<img md-card-image alt="Main image" src="{{ image }}">
 	<md-card-content>
-		<p>
-			The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-			A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-			bred for hunting.
-		</p>
+		<md-card-title>{{ weather.main.temp }}</md-card-title>
+		<p>Here is some content</p>
 	</md-card-content>
-
-	<md-card-actions>
-		<button md-button>LIKE</button>
-		<button md-button>SHARE</button>
-	</md-card-actions>
 </md-card>
