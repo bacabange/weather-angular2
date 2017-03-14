@@ -20,11 +20,27 @@ export class WeatherDetailComponent implements OnInit {
 	public image: string;
 	public myDate: Date;
 
+	public icons: Array<any>;
+	public code: number;
+	public icon: string;
+
 	constructor(
 		private _weatherService: WeatherService
 	) {
 		this.myDate = new Date();
 		this.image = 'http://victorroblesweb.es/wp-content/uploads/2016/06/angular2.png';
+		this.code = 8;
+
+		this.icons = [
+			{code: 2, icon: 'wi-thunderstorm'},
+			{code: 3, icon: 'wi-rain-mix'},
+			{code: 5, icon: 'wi-rain'},
+			{code: 6, icon: 'wi-snow'},
+			{code: 7, icon: 'wi-windy'},
+			{code: 8, icon: 'wi-cloud'}
+		];
+
+		this.icon = 'wi-cloud';
 	}
 
 	ngOnInit() {
@@ -34,6 +50,7 @@ export class WeatherDetailComponent implements OnInit {
 					if(result.photos.pages > 0) {
 						this.photos = result.photos.photo;
 						this.image = this.randomImage();
+						this.getIcon();
 					}
 				}
 			},
@@ -51,6 +68,17 @@ export class WeatherDetailComponent implements OnInit {
 		return {
 			'background': 'url('+ this.image +') no-repeat center center',
 			'background-size': 'cover'
+		}
+	}
+
+	getIcon(){
+		this.code = Math.round(this.weather.weather[0].id / 100);
+
+		for (var i = this.icons.length - 1; i >= 0; i--) {
+			if(this.code == this.icons[i].code) {
+				this.icon = this.icons[i].icon;
+				return;
+			}
 		}
 	}
 

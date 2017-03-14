@@ -33,6 +33,9 @@
 	color: #9e9e9e;
 }
 
+.weather-card-date-icon {
+	color: #311b92;
+}
 
 .weather-card-image {
 	width: 200px;

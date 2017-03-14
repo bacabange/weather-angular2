@@ -1,10 +1,3 @@
-<!-- <md-card class="weather-card">
-	<img md-card-image alt="{{ city.name }}" src="{{ image }}" *ngIf="image">
-	<md-card-content>
-		<md-card-title>{{ weather.main.temp }} &deg;C</md-card-title>
-		<p>{{myDate | amDateFormat:'LL'}}</p>
-	</md-card-content>
-</md-card> -->
 
 <div class="weather-card">
 	<div class="weather-card-info">
@@ -19,6 +12,9 @@
 			</div>
 
 			<div class="weather-card-date">
+				<span class="weather-card-date-icon">
+					<i class="wi {{ icon }}"></i>
+				</span>
 				<span>{{myDate | amDateFormat:'LL'}}</span>
 			</div>
 			
