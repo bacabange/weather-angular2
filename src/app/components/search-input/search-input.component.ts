@@ -32,7 +32,7 @@ export class SearchInputComponent implements OnInit {
 	) {	}
 
 	ngOnInit() {
-
+		// consumir servicio de ciudades
 		this._citiesService.getCities().subscribe(
 			result => {
 				this.cities = result;
@@ -42,26 +42,12 @@ export class SearchInputComponent implements OnInit {
 					.map(name => name ? this.filter(name) : this.cities.slice(1));
 			}, 
 			error => console.log(error));
-
 	}
-
-	filter(name: string): City[] {
-		return this.cities.filter(option => new RegExp(name, 'gi').test(option.name)); 
-	}
-
-	displayFn(city: City): string {
-		return city ? city.name : null;
-	}
-
-	onShow(agreed: boolean) {
-		this.onShowWeatherDetail.emit(agreed);
-		this.showWeatherDetail = true;
-	}
-
+	// Evento, seleccionar ciudad
 	selectCity (city: City){
 		console.log(city);
 		
-		this._weatherService.getWeather().subscribe(
+		this._weatherService.getWeather(city._id).subscribe(
 			result => {
 				console.log(result);
 			},
@@ -72,6 +58,19 @@ export class SearchInputComponent implements OnInit {
 		this.onShow(true);
 	}
 
+	// Filtrar por el nombre de la ciudad
+	filter(name: string): City[] {
+		return this.cities.filter(option => new RegExp(name, 'gi').test(option.name)); 
+	}
+	// Mostrar el nombre de la ciudad cuando se selecciona
+	displayFn(city: City): string {
+		return city ? city.name : null;
+	}
+	// Mostrar card del clima
+	onShow(agreed: boolean) {
+		this.onShowWeatherDetail.emit(agreed);
+		this.showWeatherDetail = true;
+	}
 	
 
 }

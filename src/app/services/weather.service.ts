@@ -17,11 +17,11 @@ export class WeatherService{
 		this.url = 'http://api.openweathermap.org/data/2.5/weather';
 	}
 
-    getWeather(){
+    getWeather(id){
 		let params: URLSearchParams = new URLSearchParams();
-		
+
 		params.set('appid', this.api_key);
-		params.set('id', '2172797');
+		params.set('id', id);
 
 		return this._http.get(this.url, {search: params})
 						.map(res => res.json());
