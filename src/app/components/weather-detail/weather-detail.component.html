@@ -1,11 +1,28 @@
-<md-card class="weather-card">
-	<md-card-header>
-		<md-card-title>{{ city.name }}</md-card-title>
-		<md-card-subtitle>{{ city.country }}</md-card-subtitle>
-	</md-card-header>
-	<img md-card-image alt="Main image" src="{{ image }}">
+<!-- <md-card class="weather-card">
+	<img md-card-image alt="{{ city.name }}" src="{{ image }}" *ngIf="image">
 	<md-card-content>
-		<md-card-title>{{ weather.main.temp }}</md-card-title>
-		<p>Here is some content</p>
+		<md-card-title>{{ weather.main.temp }} &deg;C</md-card-title>
+		<p>{{myDate | amDateFormat:'LL'}}</p>
 	</md-card-content>
-</md-card>
+</md-card> -->
+
+<div class="weather-card">
+	<div class="weather-card-info">
+		<div class="weather-card-title">
+			<h2>{{ city.name }}</h2>
+		</div>
+
+		<div class="weather-card-content">
+
+			<div class="weather-card-grades">
+				<span>{{ weather.main.temp }} &deg;C</span>
+			</div>
+
+			<div class="weather-card-date">
+				<span>{{myDate | amDateFormat:'LL'}}</span>
+			</div>
+			
+		</div>
+	</div>
+	<div class="weather-card-image" [ngStyle]="backgroundImage()"></div>
+</div>

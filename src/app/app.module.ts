@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { MaterialModule } from '@angular/material';
+import { MomentModule } from 'angular2-moment';
 
 import { AppComponent } from './app.component';
 import { SearchInputComponent } from './components/search-input/search-input.component';
@@ -27,7 +28,8 @@ const routes: Routes = [
     HttpModule,
     MaterialModule,
     RouterModule.forRoot(routes),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MomentModule
   ],
   providers: [],
   bootstrap: [AppComponent]

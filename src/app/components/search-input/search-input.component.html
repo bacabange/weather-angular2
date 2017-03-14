@@ -1,6 +1,6 @@
 <div class="search-input-container">
 	<md-input-container class="input-full-width">
-	   <input type="text" placeholder="Department/State" mdInput [formControl]="myControl" [mdAutocomplete]="auto">
+	   <input type="text" placeholder="Department/State" (keyup)="show(false)" mdInput [formControl]="myControl" [mdAutocomplete]="auto">
 	</md-input-container>
 
 	<md-autocomplete #auto="mdAutocomplete" [displayWith]="displayFn">

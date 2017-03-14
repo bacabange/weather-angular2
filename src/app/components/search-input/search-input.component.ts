@@ -54,7 +54,7 @@ export class SearchInputComponent implements OnInit {
 		this._weatherService.getWeather(city._id).subscribe(
 			result => {
 				this.weather = result;
-				this.onShowCardWeather();
+				this.show(true);
 			},
 
 			error => console.log(error)
@@ -70,9 +70,8 @@ export class SearchInputComponent implements OnInit {
 		return city ? city.name : null;
 	}
 
-	onShowCardWeather(){
-		this.showWeatherDetail = true;
-	}
-	
+	show(isShow){
+		this.showWeatherDetail = isShow;
+	}	
 
 }

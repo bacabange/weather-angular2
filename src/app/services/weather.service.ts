@@ -42,9 +42,9 @@ export class WeatherService{
 
 		params.set('api_key', this.api_key_flickr);
 		params.set('tags', tags);
-		// params.set('lat', lat);
-		// params.set('lon', lon);
-		// params.set('accuracy', '1');
+		params.set('lat', lat);
+		params.set('lon', lon);
+		params.set('accuracy', '1');
 		params.set('sort', 'relevance');
 		params.set('extras', 'url_l');
 		params.set('format', 'json');
