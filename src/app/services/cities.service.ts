@@ -12,7 +12,6 @@ export class CitiesService{
     constructor(private http: Http) { }
 
     public getCities(): Observable<any> {
-         return this.http.get("./app/resources/city-list.json").map((res) => res.json());
-
+         return this.http.get("./src/app/resources/city-list.json").map((res) => res.json());
      }
 }
